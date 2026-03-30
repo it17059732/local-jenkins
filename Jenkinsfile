@@ -17,11 +17,11 @@ pipeline {
         stage('Build & Push Images') {
             steps {
                 sh """
-                docker build -t $DOCKER_REGISTRY/my-frontend:latest ./frontend
-                docker build -t $DOCKER_REGISTRY/my-backend:latest ./backend
+                docker build -t $it17059732/my-frontend:latest ./frontend
+                docker build -t $it17059732/my-backend:latest ./backend
 
-                docker push $DOCKER_REGISTRY/my-frontend:latest
-                docker push $DOCKER_REGISTRY/my-backend:latest
+                docker push $it17059732/my-frontend:latest
+                docker push $it17059732/my-backend:latest
                 """
             }
         }
