@@ -2,7 +2,10 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_REGISTRY = 'it17059732'
+        DOCKER_REGISTRY = 'it17059732' 
+        DOCKERHUB_USERNAME = credentials('it17059732')
+        DOCKERHUB_PASSWORD = credentials('dckr_pat_auDcZtORqTyNCz_2jd1dtInxt6s')
+        
         
     }
 
@@ -11,7 +14,7 @@ pipeline {
         stage('Build & Push Images') {
             steps {
                 sh """
-                echo "dckr_pat_auDcZtORqTyNCz_2jd1dtInxt6s" | docker login -u "it17059732" --password-stdin
+                echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
                 docker build -t it17059732/my-frontend:latest ./frontend
                 docker build -t it17059732/my-backend:latest ./backend
 
