@@ -6,14 +6,6 @@ pipeline {
         DOCKER_REGISTRY = 'it17059732'
     }
 
-    stages {
-
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/it17059732/local-jenkins.git'
-            }
-        }
-
         stage('Build & Push Images') {
             steps {
                 sh """
