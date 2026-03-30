@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -6,14 +5,16 @@ pipeline {
         DOCKER_REGISTRY = 'it17059732'
     }
 
+    stages {
+
         stage('Build & Push Images') {
             steps {
                 sh """
-                docker build -t $it17059732/my-frontend:latest ./frontend
-                docker build -t $it17059732/my-backend:latest ./backend
+                docker build -t it17059732/my-frontend:latest ./frontend
+                docker build -t it17059732/my-backend:latest ./backend
 
-                docker push $it17059732/my-frontend:latest
-                docker push $it17059732/my-backend:latest
+                docker push it17059732/my-frontend:latest
+                docker push it17059732/my-backend:latest
                 """
             }
         }
@@ -25,5 +26,6 @@ pipeline {
                 """
             }
         }
-    }
 
+    }
+}
